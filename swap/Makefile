@@ -1,0 +1,5 @@
+PROGS= swap
+
+include ../Makefile
+
+
