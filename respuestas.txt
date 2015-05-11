@@ -1,0 +1,23 @@
+1. en casa
+
+2. en casa
+
+
+4. nada
+
+5.
+
+(ver plotsquestion5)
+
+Como podemos observar en los graficos, hay un cambio significativo en el tiempo cuando se emplean alineamientos 
+que no son multiples del tamaño que se selecciona como tipo de datos (8, 16,32 o 64), y al comprarlas todas 
+se aprecia que el rendimiento aumenta a medida que el tipo de datos aumenta hasta el caso de 64, donde encontramos 
+que es superior al tamaño de cache y por lo tanto que no cabe todo en cache lo que hace que el tiempo sea más alto.
+
+
+6.
+
+
+
+
+7. nada
