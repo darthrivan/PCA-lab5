@@ -6,10 +6,10 @@
 #include "clock.h" /* routines to access the cycle counter */
 
 #define MINBYTES (1 << 10)  /* Working set size ranges from 1 KB */
-#define MAXBYTES (1<< 24)  /* ... up to 16 MB */
+#define MAXBYTES (1 << 24)  /* ... up to 16 MB */
 
 #define MAXSTRIDE 64        /* Strides range from 1 to 32 */
-#define MAXELEMS MAXBYTES/sizeof(int) 
+#define MAXELEMS (MAXBYTES/sizeof(int))
 
 int data[MAXELEMS];         /* The array we'll be traversing */
 

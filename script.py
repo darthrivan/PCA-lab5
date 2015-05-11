@@ -339,7 +339,7 @@ if __name__ == "__main__":
 	args = vars(argument_parser.parse_args(sys.argv[1:]))
 
 	# PARAMETERS
-	COMPILATION_FLAGS = ['-O3']
+	COMPILATION_FLAGS = ['-Wall', '-O2', '-g', 'fcyc2.c', 'clock.c']
 	BINARY_OUTPUT = False
 	PROGRAM_ARGUMENTS = []
 	EXT = 'tex'

@@ -1,7 +1,8 @@
 #! /bin/sh
 
 n_elems=100000000
-n_bits=22
+# n_bits=22
+n_bits=18
 runs=3
 freq=3200000
 
@@ -12,7 +13,8 @@ nombre="distribution"
 
 
 # Para las distribuciones 0 i 1
-for d in `seq 0 1 1`; do
+# for d in `seq 0 1 1`; do
+	d=0
 	rm -f $n_elems-$d-$filename
 
 	# Para diferentes tamaños de bits
@@ -32,5 +34,5 @@ for d in `seq 0 1 1`; do
 
 	done
 
-done
+# done
 
