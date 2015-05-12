@@ -7,6 +7,7 @@
 #define MAX_CATEGORIA 40 
 #define MAX_ADDRESS 100
 
+#define BUFFER_SIZE (1<<20)
 
 typedef struct 
 {
@@ -26,10 +27,7 @@ typedef struct
 
 int compare(const void *p1, const void *p2)
 {
-    if (((Templeat*) p1)->NID > ((Templeat*) p2)->NID) return(1);
-    else if (((Templeat*) p1)->NID < ((Templeat*) p2)->NID) return(-1);
-    else return(0);
-
+    return ((Templeat*) p1)->NID - ((Templeat*) p2)->NID;
 }
 
 int main(int argc, char *argv[])
@@ -38,7 +36,6 @@ int main(int argc, char *argv[])
 	unsigned int N = 4000000, i;
 
 	if (argc > 1) N = atoi(argv[1]);
-
 
 	empleats = (Templeat *) malloc(N*sizeof(Templeat));
 	if (empleats == NULL) { fprintf(stderr, "Out of memory\n"); exit(0); }
@@ -61,9 +58,10 @@ int main(int argc, char *argv[])
 	}
 
 	qsort(empleats, N, sizeof(Templeat), compare);
-	for (i=0; i<N; i++){
-	        write(1, &empleats[i],sizeof(Templeat));
+	unsigned int N_blocks = N / BUFFER_SIZE;
+	for (i=0; i<N_blocks*BUFFER_SIZE; i += BUFFER_SIZE){
+		write (1, &empleats[i], BUFFER_SIZE*sizeof(Templeat));
 	}
-
+	write (1, &empleats[i], (N % BUFFER_SIZE)*sizeof(Templeat));
 	return 0;
 }

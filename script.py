@@ -280,7 +280,7 @@ class Tester(object):
 
 	def _generate_output(self):
 		Debugger.log('Generating test output...')
-		output_file = open('output_original.out', 'wb' if self.binary else 'w')
+		output_file = open('/tmp/output_original.out', 'wb' if self.binary else 'w')
 		try:
 			cmd = run([self.original_program.get_exec_path()]+
 					   self.original_program.get_arguments(),
@@ -293,7 +293,7 @@ class Tester(object):
 
 	def test(self, program):
 		Debugger.log('Testing %s...' % program.get_exec_name())
-		output_file = open('output_tested.out', 'wb' if self.binary else 'w')
+		output_file = open('/tmp/output_tested.out', 'wb' if self.binary else 'w')
 		try:
 			cmd = run([program.get_exec_path()]+
 					   program.get_arguments(),
@@ -303,9 +303,9 @@ class Tester(object):
 				program.get_exec_name())
 		output_file.close()
 		if self.binary:
-			run(['cmp', '-s', 'output_original.out', 'output_tested.out'])
+			run(['cmp', '-s', '/tmp/output_original.out', '/tmp/output_tested.out'])
 		else:
-			run(['diff', '-q', 'output_original.out', 'output_tested.out'])
+			run(['diff', '-q', '/tmp/output_original.out', '/tmp/output_tested.out'])
 		Debugger.success()
 
 
@@ -339,10 +339,10 @@ if __name__ == "__main__":
 	args = vars(argument_parser.parse_args(sys.argv[1:]))
 
 	# PARAMETERS
-	COMPILATION_FLAGS = ['-Wall', '-O2', '-g', 'fcyc2.c', 'clock.c']
-	BINARY_OUTPUT = False
-	PROGRAM_ARGUMENTS = []
-	EXT = 'tex'
+	COMPILATION_FLAGS = ['-DEXTES', '-O0', '-g3']
+	BINARY_OUTPUT = True
+	PROGRAM_ARGUMENTS = ['70000']
+	EXT = 'png'
 
 	def acc(commit, code, test=None):
 		compiler  = Compiler(code, flags=COMPILATION_FLAGS, from_stdin=True)
