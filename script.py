@@ -339,9 +339,10 @@ if __name__ == "__main__":
 	args = vars(argument_parser.parse_args(sys.argv[1:]))
 
 	# PARAMETERS
-	COMPILATION_FLAGS = ['-DEXTES', '-O0', '-g3']
+	COMPILATION_FLAGS = ['-DEXTES', '-O3', '-g3']
 	BINARY_OUTPUT = True
 	PROGRAM_ARGUMENTS = ['70000']
+	# PROGRAM_ARGUMENTS = []
 	EXT = 'png'
 
 	def acc(commit, code, test=None):
