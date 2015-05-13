@@ -48,7 +48,6 @@ int main(int argc, char *argv[])
 	empleats = (Templeat *) malloc(N*sizeof(Templeat));
 	empleats_def = (Templeat *) malloc(N*sizeof(Templeat));
 	if (empleats == NULL) { fprintf(stderr, "Out of memory\n"); exit(0); }
-	memset(empleats, 0, N*sizeof(Templeat));
 
 	/* Random generation */
 	for (i=0; i<N; i++) {
